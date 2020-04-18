@@ -7,24 +7,27 @@ from django.shortcuts import render
 def index(request):
     result = '<h1>Welcome to our color bars project</h1>' \
              '<svg width="400" height="110">' \
-             '<rect width="300" height="100" style="fill:rgb(0, 0, 255);stroke-width:3;stroke:rgb(0,0,0)" />' \
+             '<rect width="300" height="100" style="fill:rgb(130, 65, 0);stroke-width:0;stroke:rgb(0,0,0)" />' \
              '</svg>' \
              '<svg width="400" height="110">' \
-             '<rect width="300" height="100" style="fill:rgb(0, 255, 0);stroke-width:3;stroke:rgb(0,0,0)" />' \
+             '<rect width="300" height="100" style="fill:rgb(200, 200, 0);stroke-width:0;stroke:rgb(0,0,0)" />' \
              '</svg>' \
              '<svg width="400" height="110">' \
-             '<rect width="300" height="100" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(0,0,0)" />' \
+             '<rect width="300" height="100" style="fill:rgb(200, 0, 0);stroke-width:0;stroke:rgb(0,0,0)" />' \
              '</svg>' \
              '<svg width="400" height="110">' \
-             '<rect width="300" height="100" style="fill:rgb(255, 255, 0);stroke-width:3;stroke:rgb(0,0,0)" />' \
+             '<rect width="300" height="100" style="fill:rgb(0, 130, 0);stroke-width:0;stroke:rgb(0,0,0)" />' \
              '</svg>' \
              '<svg width="400" height="110">' \
-             '<rect width="300" height="100" style="fill:rgb(255, 0, 255);stroke-width:3;stroke:rgb(0,0,0)" />' \
+             '<rect width="300" height="100" style="fill:rgb(0, 0, 0);stroke-width:0;stroke:rgb(0,0,0)" />' \
              '</svg>'             '<svg width="400" height="110">' \
-             '<rect width="300" height="100" style="fill:rgb(0,255,255);stroke-width:3;stroke:rgb(0,0,0)" />' \
+             '<rect width="300" height="100" style="fill:rgb(140, 70, 0);stroke-width:0;stroke:rgb(0,0,0)" />' \
              '</svg>' \
              '<svg width="400" height="110">' \
-             '<rect width="300" height="100" style="fill:rgb(127, 127, 127);stroke-width:3;stroke:rgb(0,0,0)" />' \
+             '<rect width="300" height="100" style="fill:rgb(130, 130, 130);stroke-width:0;stroke:rgb(0,0,0)" />' \
+             '</svg>' \
+             '<svg width="400" height="110">' \
+             '<rect width="300" height="100" style="fill:rgb(0, 0, 130);stroke-width:0;stroke:rgb(0,0,0)" />' \
              '</svg>'
 
     return HttpResponse(result)
