@@ -5,21 +5,35 @@
     <title>Starting page</title>
 </head>
 <script>
-    function onSubmit() {
-        textControl = document.getElementById('name');
-        toRedirect = window.location.protocol + '//' + window.location.host + '/welcome/'
-        window.location.href = toRedirect + textControl.value + '/12345678';
+    function onSelectPicture() {
+        textControl = document.getElementById('input_name_select_picture');
+        toRedirect = window.location.protocol + '//' + window.location.host + '/welcome/select_picture/'
+        window.location.href = toRedirect + textControl.value;
+        return false;
+    }
+
+    function onGuessPicture() {
+        textControl = document.getElementById('input_name_guess_picture');
+        toRedirect = window.location.protocol + '//' + window.location.host + '/welcome/guess_picture/'
+        window.location.href = toRedirect + textControl.value;
         return false;
     }
 </script>
 <body>
  <h1>Welcome to our color bars project</h1>
 
- <form onsubmit="return onSubmit();">
-     <label for="name">Name</label>
-     <input type="text" id="name">
-     <input type="submit" value="Send">
+ <form onsubmit="return onSelectPicture();">
+     <label for="input_name_select_picture">Select Picture</label>
+     <input type="text" id="input_name_select_picture">
+     <input type="submit" value="Select Picture">
  </form>
+
+ <form onsubmit="return onGuessPicture();">
+     <label for="input_name_guess_picture">Guess Picture</label>
+     <input type="text" id="input_name_guess_picture">
+     <input type="submit" value="Guess Picture">
+ </form>
+
 
  {% for color in colors %}
   <svg width="400" height="110">
