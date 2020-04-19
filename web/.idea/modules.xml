@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../algo_club/sandbox/users/tarstars/all_o_in_one/.idea/all_o_in_one.iml" filepath="$PROJECT_DIR$/../../algo_club/sandbox/users/tarstars/all_o_in_one/.idea/all_o_in_one.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/web.iml" filepath="$PROJECT_DIR$/.idea/web.iml" />
     </modules>
   </component>

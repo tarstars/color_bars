@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Starting page</title>
+</head>
+<script>
+    function onSubmit() {
+        textControl = document.getElementById('name');
+        toRedirect = window.location.protocol + '//' + window.location.host + '/welcome/'
+        window.location.href = toRedirect + textControl.value + '/12345678';
+        return false;
+    }
+</script>
+<body>
+ <h1>Welcome to our color bars project</h1>
+
+ <form onsubmit="return onSubmit();">
+     <label for="name">Name</label>
+     <input type="text" id="name">
+     <input type="submit" value="Send">
+ </form>
+
+ {% for color in colors %}
+  <svg width="400" height="110">
+  <rect width="300" height="100" style="fill:rgb{{ color }}" />
+  </svg>
+ {% endfor %}
+
+</body>
+</html>
