@@ -6,5 +6,13 @@
 </head>
 <body>
   <h1>Here user {{ user_name }} can select a picture to work with</h1>
+
+    <ul>
+        {% for picture in pictures %}
+            <a href="welcome/train_picture/{{ user_name }}/{{ picture }}/1_2_3_4_5_6_7_8" >
+            <img src="pictures/{{ picture }}.jpg" width="400" height="400"></img>
+            </a>
+        {% endfor %}
+    </ul>
 </body>
 </html>
