@@ -53,7 +53,7 @@ class Palette:
 
         :return:
         """
-        return list(range(1, len(cls.colors + 1)))
+        return list(range(1, len(cls.colors) + 1))
 
     @classmethod
     def get_color_by_index(cls, ind):
