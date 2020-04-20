@@ -41,6 +41,7 @@ def train_picture(request, user_name, picture_name, color_bars):
     list_of_choices = [(list(exclude_from(demonstrate, bar)), memorize + [bar], bar) for bar in demonstrate]
     list_of_choices = [{'demonstrate': '_'.join(map(str, demonstrate)),
                         'permutation': '_'.join(map(str, permutation)),
+                        'link': '__'.join('_'.join(map(str, part)) for part in (demonstrate, permutation)),
                         'color': Palette.get_color_by_index(color_index),
                         } for demonstrate, permutation, color_index in list_of_choices]
 

@@ -13,9 +13,11 @@
 
 {% for choice in list_of_choices %}
     <!-- <p>{{ choice.demonstrate }} - {{ choice.permutation }} {{ choice.color }}</p> -->
-    <svg width="110" height="110">
-    <rect width="100" height="100" style="fill:rgb{{ choice.color }}" />
-    </svg>
+    <a href="{{ choice.link }}">
+      <svg width="110" height="110">
+        <rect width="100" height="100" style="fill:rgb{{ choice.color }}" />
+      </svg>
+    </a>
 {% endfor %}
 
 </body>
