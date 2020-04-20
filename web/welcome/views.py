@@ -34,7 +34,7 @@ def guess_picture(request, user_name):
     return HttpResponse(template.render({'user_name': user_name}, request))
 
 
-def return_picture(request, picture_name):
+def return_picture(request, picture_name, user_name=None, bare_picture_name=None):
     return HttpResponse(open('pictures/' + picture_name, 'rb').read(), content_type='image/jpeg')
 
 
