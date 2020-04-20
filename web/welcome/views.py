@@ -6,19 +6,12 @@ from django.shortcuts import render
 # Create your views here.
 from django.template import loader
 
-from utility.color_bars import parse_set_string, exclude_from
+from utility.color_bars import parse_set_string, exclude_from, Palette
 
 
 def index(request):
     template = loader.get_template('welcome/index.html')
-    colors = ['(130, 65, 0)',
-              '(200, 200, 0)',
-              '(0, 130, 0)',
-              '(0, 0, 0)',
-              '(130, 0, 70)',
-              '(130, 130, 130)',
-              '(0, 0, 130)',
-              ]
+    colors = map(str, map(Palette.get_color_by_index, Palette.get_indices()))
     return HttpResponse(template.render({'colors': colors}, request))
 
 
@@ -44,12 +37,17 @@ def train_picture(request, user_name, picture_name, color_bars):
     template = loader.get_template('welcome/train_picture.html')
     demonstrate, memorize = parse_set_string(color_bars)
     demonstrate = set(demonstrate)
-    set_of_choices = [(list(exclude_from(demonstrate, bar)), memorize + [bar]) for bar in demonstrate]
-    str_set_of_choices = [tuple('_'.join(map(str, part)) for part in choice) for choice in set_of_choices]
+
+    list_of_choices = [(list(exclude_from(demonstrate, bar)), memorize + [bar], bar) for bar in demonstrate]
+    list_of_choices = [{'demonstrate': '_'.join(map(str, demonstrate)),
+                        'permutation': '_'.join(map(str, permutation)),
+                        'color': Palette.get_color_by_index(color_index),
+                        } for demonstrate, permutation, color_index in list_of_choices]
+
     context = {
         'user_name': user_name,
         'picture_name': picture_name,
         'color_bars': color_bars,
-        'set_of_choices': str_set_of_choices
+        'list_of_choices': list_of_choices
     }
     return HttpResponse(template.render(context, request))

@@ -32,3 +32,31 @@ def exclude_from(s: Set, v) -> Set:
     result = s.copy()
     result.remove(v)
     return result
+
+
+class Palette:
+    """ Stores colors for bars
+
+    """
+    colors = ['(130, 65, 0)',
+              '(200, 200, 0)',
+              '(0, 130, 0)',
+              '(0, 0, 0)',
+              '(130, 0, 70)',
+              '(130, 130, 130)',
+              '(0, 0, 130)',
+              ]
+
+    @classmethod
+    def get_indices(cls):
+        """ One-based list of indices for colors of bars
+
+        :return:
+        """
+        return list(range(1, len(cls.colors + 1)))
+
+    @classmethod
+    def get_color_by_index(cls, ind):
+        """ Returns color by its one-based index
+        """
+        return cls.colors[ind - 1]

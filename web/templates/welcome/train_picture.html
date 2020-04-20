@@ -9,8 +9,13 @@
 <h1> {{ user_name }}, you can train here picture {{ picture_name }} with {{ color_bars }} </h1>
 <img src="pictures/{{ picture_name }}.jpg"></img>
 
-{% for choice in set_of_choices %}
-    <p>{{ choice }} - {{ choice.0 }} - {{ choice.1 }}</p>
+<p></p>
+
+{% for choice in list_of_choices %}
+    <!-- <p>{{ choice.demonstrate }} - {{ choice.permutation }} {{ choice.color }}</p> -->
+    <svg width="110" height="110">
+    <rect width="100" height="100" style="fill:rgb{{ choice.color }}" />
+    </svg>
 {% endfor %}
 
 </body>
