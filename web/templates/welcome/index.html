@@ -22,17 +22,30 @@
 <body>
  <h1>Welcome to our color bars project</h1>
 
- <form onsubmit="return onSelectPicture();">
-     <label for="input_name_select_picture">Select Picture</label>
-     <input type="text" id="input_name_select_picture">
-     <input type="submit" value="Select Picture">
- </form>
-
- <form onsubmit="return onGuessPicture();">
-     <label for="input_name_guess_picture">Guess Picture</label>
-     <input type="text" id="input_name_guess_picture">
-     <input type="submit" value="Guess Picture">
- </form>
-
+ <table border="0">
+     <tr>
+         <td width="400">Please, enter your name and press "Go" button to select a picture and work with it</td>
+         <td width="100" style="border: 0 none"></td>
+         <td width="400">Please, enter your name and press "Go" button to let our system peek a picture for you</td>
+     </tr>
+     <tr>
+         <td>
+             <form onsubmit="return onSelectPicture();">
+                 <label for="input_name_select_picture">Your name</label>
+                 <input type="text" id="input_name_select_picture">
+                 <input type="submit" value="Go">
+             </form>
+         </td>
+         <td style="border: 0 none">
+         </td>
+         <td>
+             <form onsubmit="return onGuessPicture();">
+                 <label for="input_name_guess_picture">Your name</label>
+                 <input type="text" id="input_name_guess_picture">
+                 <input type="submit" value="Go">
+             </form>
+        </td>
+    </tr>
+ </table>
 </body>
 </html>

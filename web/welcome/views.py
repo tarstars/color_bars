@@ -62,7 +62,8 @@ def train_picture(request, user_name, picture_name, color_bars):
                      )
     tr.save()
 
-    return HttpResponse(f'<h1> Thank you for your participation! </h1> <p>{user_name} {picture_name} {memorize}</p>')
+    template = loader.get_template('welcome/after_submit.html')
+    return HttpResponse(template.render({}, request))
 
 
 def show_database(request):

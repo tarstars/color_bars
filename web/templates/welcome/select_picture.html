@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Select Picture</title>
+    <style>
+        a {text-decoration: none;}
+    </style>
 </head>
 <body>
-  <h1>Here user {{ user_name }} can select a picture to work with</h1>
-
-    <ul>
+  <h1>{{ user_name }}, please click on a image you want to work with</h1>
+   <ul>
         {% for picture in pictures %}
             <a href="welcome/train_picture/{{ user_name }}/{{ picture }}/1_2_3_4_5_6_7__" >
-            <img src="pictures/{{ picture }}.jpg" width="400" height="400"></img>
+            <img src="pictures/{{ picture }}.jpg" width="auto" height="200"></img>
             </a>
         {% endfor %}
     </ul>
