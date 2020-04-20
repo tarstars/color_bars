@@ -1,12 +1,13 @@
 import glob
 
 from django.http import HttpResponse
-from django.shortcuts import render
 
 # Create your views here.
 from django.template import loader
+from django.utils import timezone
 
 from utility.color_bars import parse_set_string, exclude_from, Palette
+from welcome.models import TrainRecord
 
 
 def index(request):
@@ -38,17 +39,32 @@ def train_picture(request, user_name, picture_name, color_bars):
     demonstrate, memorize = parse_set_string(color_bars)
     demonstrate = set(demonstrate)
 
-    list_of_choices = [(list(exclude_from(demonstrate, bar)), memorize + [bar], bar) for bar in demonstrate]
-    list_of_choices = [{'demonstrate': '_'.join(map(str, demonstrate)),
-                        'permutation': '_'.join(map(str, permutation)),
-                        'link': '__'.join('_'.join(map(str, part)) for part in (demonstrate, permutation)),
-                        'color': Palette.get_color_by_index(color_index),
-                        } for demonstrate, permutation, color_index in list_of_choices]
+    if demonstrate:
+        list_of_choices = [(list(exclude_from(demonstrate, bar)), memorize + [bar], bar) for bar in demonstrate]
+        list_of_choices = [{'demonstrate': '_'.join(map(str, demonstrate)),
+                            'permutation': '_'.join(map(str, permutation)),
+                            'link': '__'.join('_'.join(map(str, part)) for part in (demonstrate, permutation)),
+                            'color': Palette.get_color_by_index(color_index),
+                            } for demonstrate, permutation, color_index in list_of_choices]
 
-    context = {
-        'user_name': user_name,
-        'picture_name': picture_name,
-        'color_bars': color_bars,
-        'list_of_choices': list_of_choices
-    }
-    return HttpResponse(template.render(context, request))
+        context = {
+            'user_name': user_name,
+            'picture_name': picture_name,
+            'color_bars': color_bars,
+            'list_of_choices': list_of_choices
+        }
+        return HttpResponse(template.render(context, request))
+
+    tr = TrainRecord(dt=timezone.now(),
+                     user_name=user_name,
+                     picture_name=picture_name,
+                     permutation='_'.join(map(str, memorize))
+                     )
+    tr.save()
+
+    return HttpResponse(f'<h1> Thank you for your participation! </h1> <p>{user_name} {picture_name} {memorize}</p>')
+
+
+def show_database(request):
+    template = loader.get_template('welcome/display_database.html')
+    return HttpResponse(template.render({'train_records': TrainRecord.objects.all()}, request))

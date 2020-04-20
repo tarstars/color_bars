@@ -10,4 +10,5 @@ urlpatterns = [
     path('welcome/guess_picture/<str:user_name>', views.guess_picture, name='guess_picture'),
     path('welcome/select_picture/welcome/train_picture/<str:user_name>/<str:picture_name>/<str:color_bars>',
          views.train_picture, name='train_picture'),
+    path('welcome/show_database', views.show_database, name='show_database')
 ]
