@@ -11,3 +11,4 @@ class TrainRecord(models.Model):
     user_name = models.CharField(max_length=100)
     picture_name = models.CharField(max_length=100)
     permutation = models.CharField(max_length=100)
+    initial_permutation = models.CharField(max_length=100)

@@ -12,6 +12,7 @@
     <td>Date</td>
     <td>Picture name</td>
     <td>Permutation</td>
+    <td>Initial permutation</td>
 </tr>
     {% for one_user_name in train_records %}
     <tr>
@@ -19,6 +20,7 @@
         <td> {{ one_user_name.dt }} </td>
         <td> {{ one_user_name.picture_name }} </td>
         <td> {{ one_user_name.permutation }} </td>
+        <td> {{ one_user_name.initial_permutation }}</td>
     </tr>
     {% endfor %}
 </table>

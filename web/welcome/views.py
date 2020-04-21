@@ -63,7 +63,8 @@ def train_picture(request, user_name, picture_name, color_bars, initial_permutat
     tr = TrainRecord(dt=timezone.now(),
                      user_name=user_name,
                      picture_name=picture_name,
-                     permutation='_'.join(map(str, memorize))
+                     permutation='_'.join(map(str, memorize)),
+                     initial_permutation=initial_permutation,
                      )
     tr.save()
 
