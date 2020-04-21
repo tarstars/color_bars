@@ -11,8 +11,8 @@
   <h1>{{ user_name }}, please click on a image you want to work with</h1>
    <ul>
         {% for picture in pictures %}
-            <a href="welcome/train_picture/{{ user_name }}/{{ picture }}/1_2_3_4_5_6_7__" >
-            <img src="pictures/{{ picture }}.jpg" width="auto" height="200"></img>
+            <a href="welcome/train_picture/{{ user_name }}/{{ picture }}/{{ random_permutation }}/{{ random_permutation }}__" >
+            <img src="/pictures/{{ picture }}.jpg" width="auto" height="200"></img>
             </a>
         {% endfor %}
     </ul>

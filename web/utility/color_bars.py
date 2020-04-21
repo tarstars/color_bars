@@ -22,16 +22,14 @@ def join_set_string(to_show: List[int], permutation: List[int]) -> str:
     return '__'.join('_'.join(map(str, part)) for part in (to_show, permutation))
 
 
-def exclude_from(s: Set, v) -> Set:
+def exclude_from(s: List, v: int) -> List:
     """ Removes an element from the set and returns modified set
 
     :param s: set of elements
     :param v: on of elements
     :return: set without an element
     """
-    result = s.copy()
-    result.remove(v)
-    return result
+    return [val for val in s if val != v]
 
 
 class Palette:

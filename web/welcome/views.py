@@ -1,4 +1,5 @@
 import glob
+import random
 
 from django.http import HttpResponse
 
@@ -18,7 +19,12 @@ def index(request):
 
 def select_picture(request, user_name):
     template = loader.get_template('welcome/select_picture.html')
+
+    random_permutation = Palette.get_indices()
+    random.shuffle(random_permutation)
+
     context = {'user_name': user_name,
+               'random_permutation': '_'.join(map(str, random_permutation)),
                'pictures': [picture_filename[9:-4] for picture_filename in glob.glob('pictures/*')
                             if 'pictures' in picture_filename]
                }
@@ -30,17 +36,16 @@ def guess_picture(request, user_name):
     return HttpResponse(template.render({'user_name': user_name}, request))
 
 
-def return_picture(request, picture_name, user_name=None, bare_picture_name=None):
+def return_picture(request, picture_name):
     return HttpResponse(open('pictures/' + picture_name, 'rb').read(), content_type='image/jpeg')
 
 
-def train_picture(request, user_name, picture_name, color_bars):
+def train_picture(request, user_name, picture_name, color_bars, initial_permutation):
     template = loader.get_template('welcome/train_picture.html')
     demonstrate, memorize = parse_set_string(color_bars)
-    demonstrate = set(demonstrate)
 
     if demonstrate:
-        list_of_choices = [(list(exclude_from(demonstrate, bar)), memorize + [bar], bar) for bar in demonstrate]
+        list_of_choices = [(exclude_from(demonstrate, bar), memorize + [bar], bar) for bar in demonstrate]
         list_of_choices = [{'demonstrate': '_'.join(map(str, demonstrate)),
                             'permutation': '_'.join(map(str, permutation)),
                             'link': '__'.join('_'.join(map(str, part)) for part in (demonstrate, permutation)),
